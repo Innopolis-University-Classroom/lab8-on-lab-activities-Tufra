@@ -2,7 +2,7 @@ package com.muwaffaq.innopolis.solid.LSP_IS.wrong;
 
 // liskov principle the parent and the child can be reliable
 public class Pigeon implements Bird {
-    
+
     @Override
     public void fly() {
         System.out.println("Flying...");
@@ -19,8 +19,4 @@ public class Pigeon implements Bird {
     }
     /// ❌ ❌ ❌ ❌ violate Liskov Principle
     /// Pigeon can't swim
-    @Override
-    public void swim() {
-        System.out.println("I can't swim");
-    }
 }

@@ -9,39 +9,56 @@ package com.muwaffaq.innopolis.solid.OCP_DI.wrong;
 // DI : high = Abstract class
 // low : classes
 //
+
+interface Operation {
+    double perform(double left, double right);
+}
+
+class Add implements Operation {
+    public double perform(double left, double right) {
+        return left + right;
+    }
+}
+
+class Substract implements Operation {
+    public double perform(double left, double right) {
+        return left - right;
+    }
+}
+
+class Divide implements Operation {
+    public double perform(double left, double right) {
+        return left / right;
+    }
+}
+
+class Multiply implements Operation {
+    public double perform(double left, double right) {
+        return left * right;
+    }
+}
+
  class CalculatorWrong {
     private double left;
     private double right;
 
-    public enum Operation {ADD, SUBTRACT, DIVIDE,MULTIPLICATION}
-
     /// ❌ ❌ ❌ ❌
     /// this function violates the OP principle
     /// because it depend on concrete classes enum
-    public  double calculate(Operation operation) {
+    public double calculate(Operation operation) {
         double result;
-        switch (operation) {
-            case ADD:
-                result = left + right;
-                break;
-            case SUBTRACT:
-                result = left - right;
-                break;
-            default:
-            case DIVIDE:
-                result = left / right;
-                break;
-        }
+        result = operation.perform(left, right);
         return result;
     }
 
     public static void main(String[] args) {
         CalculatorWrong calculator = new CalculatorWrong();
-        calculator.calculate(Operation.ADD);
-        calculator.calculate(Operation.ADD);
+        calculator.calculate(new Add());
+        calculator.calculate(new Substract());
 
     }
 
 }
+
 
 

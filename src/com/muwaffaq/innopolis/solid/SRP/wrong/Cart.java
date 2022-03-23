@@ -25,12 +25,6 @@ public class Cart {
     void removeFromCart(Product product) {
         products.remove(product);
     }
-
-    void applyDiscount(int percentage) {
-        totals = totals * percentage;
-    }
-
-
 }
 
 
